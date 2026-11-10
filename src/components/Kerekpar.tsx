@@ -11,7 +11,7 @@ export function KerekparKartya({ kerekpar }: { kerekpar: Kerekpar }) {
                     {reszletekMegjelenites &&
                         <>
                             <p className="card-text"><em>{kerekpar.tipus}</em></p>
-                            <p className="card-text"><u>{kerekpar.napiDij}</u></p>
+                            <p className="card-text"><u>{kerekpar.napiDij} Ft</u></p>
                         </>
                     }
                 </div>
