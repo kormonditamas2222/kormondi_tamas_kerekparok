@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import type { Kerekpar } from './types/Kerekpar'
+import { KerekparKartya } from './components/Kerekpar';
 
 function App() {
   const [kerekparok, setKerekparok] = useState<Kerekpar[]>([]);
-  const [kerekparokSzama, setKerekparokSzama] = useState(0); 
-  const [legolcsobb, setLegolcsobb] = useState(0); 
-  const [legdragabb, setLegdragabb] = useState(0); 
+  const [kerekparokSzama, setKerekparokSzama] = useState(0);
+  const [legolcsobb, setLegolcsobb] = useState(0);
+  const [legdragabb, setLegdragabb] = useState(0);
   useEffect(() => {
     async function load() {
       try {
@@ -41,11 +42,18 @@ function App() {
       <div className="container">
         <h1>Kiadó kerékpárok</h1>
         <h2>Statisztikák</h2>
-        <ul className='list-group'>
+        <ul className='list-group mb-3'>
           <li className="list-group-item">Kerépkárok száma: {kerekparokSzama}</li>
           <li className="list-group-item">Legolcsóbb bérleti díj: {legolcsobb}</li>
           <li className="list-group-item">Legdrágább bérleti díj: {legdragabb}</li>
         </ul>
+        <div className="row">
+          {kerekparok.map(kerekpar => (
+            <div className="col-sm-4">
+              <KerekparKartya key={kerekpar.id} kerekpar={kerekpar} />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   )
